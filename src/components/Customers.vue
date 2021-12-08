@@ -7,7 +7,7 @@
           {{ customer.name.charAt(0).toUpperCase() + customer.name.slice(1) }}
         </h3>
       </div>
-      <router-link :to="{ name: 'Customer', params: { name: customer.name } }">
+      <router-link :to="{ name: 'Customer', params: { id: customer.id } }">
         <button class="view-btn">More info</button>
         </router-link>
     </div>

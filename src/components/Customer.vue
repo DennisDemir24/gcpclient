@@ -1,5 +1,5 @@
 <template>
-  <div :key="item.name" v-for="item in customer">
+  <div :key="item.uid" v-for="item in customer">
     <div class="row">
       <div class="flex md6 lg4">
         <va-card>
@@ -19,16 +19,16 @@
 
 <script>
 export default {
-  props: ['name'],
+  props: ['id'],
   data() {
     return {
       customer: null,
     }
   },
   methods: {
-    async fetchCustomer(name) {
+    async fetchCustomer(id) {
       const res = await fetch(
-        `https://optimum-entity-332914.ey.r.appspot.com/getCustomer/${name}`
+        `https://optimum-entity-332914.ey.r.appspot.com/getCustomer/${id}`
       )
 
       const data = await res.json()
@@ -38,7 +38,7 @@ export default {
     },
   },
   async created() {
-    this.customer = await this.fetchCustomer(this.name)
+    this.customer = await this.fetchCustomer(this.id)
   },
 }
 </script>
